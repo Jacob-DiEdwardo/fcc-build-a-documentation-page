@@ -3,10 +3,187 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Firebase Hosting</title>
+    <title>HTTP Request Methods Documentation</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    
+    <nav id="navbar">
+      <!-- HTTP Request Methods -->
+      <header>HTTP Request Methods</header>
+      <ul>
+        <!-- Introduction -->
+        <li>
+          <a class="nav-link" href="#Introduction">Introduction</a>
+        </li>
+
+        <!-- CONNECT -->
+        <li>
+          <a class="nav-link" href="#CONNECT">CONNECT</a>
+        </li>
+
+        <!-- DELETE -->
+        <li>
+          <a class="nav-link" href="#DELETE">DELETE</a>
+        </li>
+
+        <!-- GET -->
+        <li>
+          <a class="nav-link" href="#GET">GET</a>
+        </li>
+
+        <!-- HEAD -->
+        <li>
+          <a class="nav-link" href="#HEAD">HEAD</a>
+        </li>
+
+        <!-- OPTIONS -->
+        <li>
+          <a class="nav-link" href="#OPTIONS">OPTIONS</a>
+        </li>
+
+        <!-- PATCH -->
+        <li>
+          <a class="nav-link" href="#PATCH">PATCH</a>
+        </li>
+
+        <!-- POST -->
+        <li>
+          <a class="nav-link" href="#POST">POST</a>
+        </li>
+
+        <!-- PUT -->
+        <li>
+          <a class="nav-link" href="#PUT">PUT</a>
+        </li>
+
+        <!-- TRACE -->
+        <li>
+          <a class="nav-link" href="#TRACE">TRACE</a>
+        </li>
+
+        <!-- Reference -->
+        <li>
+          <a class="nav-link" href="#Reference">Reference</a>
+        </li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <!-- Introduction -->
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <article>
+          <p><b><i>Hypertext Transfer Protocol (HTTP)</i></b> is an application-layer protocol for transmitting hypermedia documents, such as HTML. It was designed for communication between web browsers and web servers, but it can also be used for other purposes. HTTP follows a classical client-server model, with a client opening a connection to make a request, then waiting until it receives a response. HTTP is a stateless protocol, meaning that the server does not keep any data (state) between two requests.</p>
+        </article>
+      </section>
+
+      <!-- CONNECT -->
+      <section class="main-section" id="CONNECT">
+        <header>CONNECT</header>
+        <article>
+          <p>The <b>HTTP <code>CONNECT</code> method</b> starts two-way communications with the requested resource. It can be used to open a tunnel.</p>
+          <p>For example, the <code>CONNECT</code> method can be used to access websites that use SSL (HTTPS). The client asks an HTTP Proxy server to tunnel the TCP connection to the desired destination. The server then proceeds to make the connection on behalf of the client. Once the connection has been established by the server, the Proxy server continues to proxy the TCP stream to and from the client.</p>
+          <p><code>CONNECT</code> is a hop-by-hop method.</p>
+        </article>
+      </section>
+
+      <!-- DELETE -->
+      <section class="main-section" id="DELETE">
+        <header>DELETE</header>
+        <article>
+          <p>The <b>HTTP <code>DELETE</code> request method</b> deletes the specified resource.</p>
+        </article>
+      </section>
+
+      <!-- GET -->
+      <section class="main-section" id="GET">
+        <header>GET</header>
+        <article>
+          <p>The <b>HTTP <code>GET</code> method</b> requests a representation of the specified resource. Requests using <code>GET</code> should only be used to request data (they shouldn't include data).</p>
+          <p><b>Note:</b> Sending body/payload in a <code>GET</code> request may cause some existing implementations to reject the request — while not prohibited by the specification, the semantics are undefined. It is better to just avoid sending payloads in <code>GET</code> requests.</p>
+        </article>
+      </section>
+
+      <!-- HEAD -->
+      <section class="main-section" id="HEAD">
+        <header>HEAD</header>
+        <article>
+          <p>The <b>HTTP <code>HEAD</code> method</b> requests the headers that would be returned if the <code>HEAD</code> request's URL was instead requested with the HTTP <code>GET</code> method. For example, if a URL might produce a large download, a <code>HEAD</code> request could read its <code>Content-Length</code> header to check the filesize without actually downloading the file.</p>
+          <p><b>Warning:</b> A response to a <code>HEAD</code> method should not have a body. If it has one anyway, that body <b>must be</b> ignored: any representation headers that might describe the erroneous body are instead assumed to describe the response which a similar <code>GET</code> request would have received.</p>
+          <p>If the response to a <code>HEAD</code> request shows that a cached URL response is now outdated, the cached copy is invalidated even if no <code>GET</code> request was made.</p>
+        </article>
+      </section>
+
+      <!-- OPTIONS -->
+      <section class="main-section" id="OPTIONS">
+        <header>OPTIONS</header>
+        <article>
+          <p>The <b>HTTP <code>OPTIONS</code> method</b> requests permitted communication options for a given URL or server. A client can specify a URL with this method, or an asterisk (<code>*</code>) to refer to the entire server.</p>
+        </article>
+      </section>
+
+      <!-- PATCH -->
+      <section class="main-section" id="PATCH">
+        <header>PATCH</header>
+        <article>
+          <p>The <b>HTTP <code>PATCH</code> request method</b> applies partial modifications to a resource.</p>
+          <p><code>PATCH</code> is somewhat analogous to the "update" concept found in CRUD (in general, HTTP is different than CRUD, and the two should not be confused).</p>
+          <p>A <code>PATCH</code> request is considered a set of instructions on how to modify a resource. Contrast this with <code>PUT</code>; which is a complete representation of a resource.</p>
+          <p>A <code>PATCH</code> is not necessarily idempotent, although it can be. Contrast this with <code>PUT</code>; which is always idempotent. The word "idempotent" means that any number of repeated, identical requests will leave the resource in the same state. For example if an auto-incrementing counter field is an integral part of the resource, then a <code>PUT</code> will naturally overwrite it (since it overwrites everything), but not necessarily so for <code>PATCH</code>.</p>
+          <p><code>PATCH</code> (like <code>POST</code>) may have side-effects on other resources.</p>
+          <p>To find out whether a server supports <code>PATCH</code>, a server can advertise its support by adding it to the list in the <code>Allow</code> or <code>Access-Control-Allow-Methods</code> (for CORS) response headers.</p>
+          <p>Another (implicit) indication that <code>PATCH</code> is allowed, is the presence of the <code>Accept-Patch</code> header, which specifies the patch document formats accepted by the server.</p>
+        </article>
+      </section>
+
+      <!-- POST -->
+      <section class="main-section" id="POST">
+        <header>POST</header>
+        <article>
+          <p>The <b>HTTP <code>POST</code> method</b> sends data to the server. The type of the body of the request is indicated by the <code>Content-Type</code> header.</p>
+          <p>The difference between <code>PUT</code> and <code>POST</code> is that <code>PUT</code> is idempotent: calling it once or several times successively has the same effect (that is no side effect), where successive identical <code>POST</code> may have additional effects, like passing an order several times.</p>
+          <p>A <code>POST</code> request is typically sent via an HTML form and results in a change on the server. In this case, the content type is selected by putting the adequate string in the <code>enctype</code> attribute of the <code>&lt;form&gt;</code> element or the <code>formenctype</code> attribute of the <code>&lt;input&gt;</code> or <code>&lt;button&gt;</code> elements:</p>
+          <ul>
+            <li><code>application/x-www-form-urlencoded</code>: the keys and values are encoded in key-value tuples separated by <code>'&'</code>, with a <code>'='</code> between the key and the value. Non-alphanumeric characters in both keys and values are URL encoded: this is the reason why this type is not suitable to use with binary data (use <code>multipart/form-data</code> instead)</li>
+            <li><code>multipart/form-data</code>: each value is sent as a block of data ("body part"), with a user agent-defined delimiter ("boundary") separating each part. The keys are given in the <code>Content-Disposition</code> header of each part.</li>
+            <li><code>text/plain</code></li>
+          </ul>
+          <p>When the <code>POST</code> request is sent via a method other than an HTML form — like via an <code>XMLHttpRequest</code> — the body can take any type. As described in the HTTP 1.1 specification, <code>POST</code> is designed to allow a uniform method to cover the following functions:</p>
+          <ul>
+            <li>Annotation of existing resources</li>
+            <li>Posting a message to a bulletin board, newsgroup, mailing list, or similar group of articles;</li>
+            <li>Adding a new user through a signup modal;</li>
+            <li>Providing a block of data, such as the result of submitting a form, to a data-handling process;</li>
+            <li>Extending a database through an append operation.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- PUT -->
+      <section class="main-section" id="PUT">
+        <header>PUT</header>
+        <article>
+          <p>The <b>HTTP <code>PUT</code> request method</b> creates a new resource or replaces a representation of the target resource with the request payload.</p>
+          <p>The difference between <code>PUT</code> and <code>POST</code> is that <code>PUT</code> is idempotent: calling it once or several times successively has the same effect (that is no side effect), whereas successive identical <code>POST</code> requests may have additional effects, akin to placing an order several times.</p>
+        </article>
+      </section>
+
+      <!-- TRACE -->
+      <section class="main-section" id="TRACE">
+        <header>TRACE</header>
+        <article>
+          <p>The <b>HTTP <code>TRACE</code> method</b> performs a message loop-back test along the path to the target resource, providing a useful debugging mechanism.</p>
+          <p>The final recipient of the request should reflect the message received, excluding some fields described below, back to the client as the message body of a <code>200</code> (<code>OK</code>) response with a <code>Content-Type</code> of <code>message/http</code>. The final recipient is either the origin server or the first server to receive a <code>Max-Forwards</code> value of 0 in the request.</p>
+        </article>
+      </section>
+
+      <!-- Reference -->
+      <section class="main-section" id="Reference">
+        <header>Reference</header>
+        <article>
+          <p>All the documentation in this page is taken from <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank">MDN</a></p>
+        </article>
+      </section>
+
+    </main>
   </body>
 </html>
